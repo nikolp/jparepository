@@ -9,10 +9,10 @@ mvn clean package
 ## H2: easier, the default
 
 ```
-java -jar target/jparepository-0.0.1-SNAPSHOT.jar
+java -jar -Dspring.profiles.active=h2 target/jparepository-0.0.1-SNAPSHOT.jar
 ```
 
-And log into h2 console to see the database
+And log into h2 console to see the database.
 
 ## MySQL
 Must first install it locally, create the db, user, password
@@ -56,7 +56,7 @@ select * from mdfile;
 Notice the command below where db engine was initialized. If you 
 ```cat /opt/homebrew/var/postgresql@13/pg_hba.conf```
 you will see that all users can log in if they are coming in locally.
-
+File talks about how to create more secure settings (after which you have to restart server)
 
 ```
 brew install postgresql@13
