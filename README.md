@@ -5,8 +5,10 @@ while keeping the same repository.
 ```
 mvn clean package
 ```
+Uses H2 in memory DB during unit tests (fully auto-confgired here. Not same as H2 below)
 
-## H2: easier, the default
+## H2
+In memory but could be set up to save to a file and be persistent.
 
 ```
 java -jar -Dspring.profiles.active=h2 target/jparepository-0.0.1-SNAPSHOT.jar
