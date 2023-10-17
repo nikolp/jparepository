@@ -17,7 +17,7 @@ public class JpaRepositoryApplication {
 	public CommandLineRunner demo(MDFileRepository repository, Environment environment) {
 		return args -> {
 			String url = environment.getProperty("spring.datasource.url");
-			MDFile f1 = new MDFile(1L, "123", "fileA", "Hello World");
+			MDFile f1 = MDFile.builder().mdId("123").fileName("fileA").contents("Hello World").build();
 			repository.save(f1);
 		};
 	}
