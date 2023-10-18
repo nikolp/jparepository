@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 
+import java.time.ZonedDateTime;
+import java.util.List;
+
 @SpringBootApplication
 @Slf4j
 public class JpaRepositoryApplication {
@@ -20,8 +23,17 @@ public class JpaRepositoryApplication {
 	@Bean
 	public CommandLineRunner demo(MDFileRepository repository, Environment environment) {
 		return args -> {
-			MDFile f1 = MDFile.builder().mdId("123").fileName("fileA").contents("Hello World").build();
+			ZonedDateTime zdt = ZonedDateTime.now();
+			MDFile f1 = MDFile.builder()
+					.mdId("123")
+					.fileName("fileA")
+					.contents("Hello World")
+					.updateTime(zdt)
+					.build();
 			repository.save(f1);
+
+			List<MDFile> readResult = repository.findByUpdateTime(zdt);
+			log.info(readResult.get(0).toString());
 
 			String url = environment.getProperty("spring.datasource.url", "");
 			// url == "" in unit tests which do not look at any db-specific profile

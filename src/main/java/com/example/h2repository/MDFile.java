@@ -5,12 +5,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.time.ZonedDateTime;
+
 @Entity
 // @Table(name = "tutorials")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Builder
 public class MDFile {
     @Id @GeneratedValue
@@ -19,4 +22,5 @@ public class MDFile {
     // 	@Column(name = "file_name")
     String fileName;
     String contents;
+    ZonedDateTime updateTime;
 }
