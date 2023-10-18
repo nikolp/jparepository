@@ -33,6 +33,7 @@ public class JpaRepositoryApplication {
 			repository.save(f1);
 
 			List<MDFile> readResult = repository.findByUpdateTime(zdt);
+			assert readResult.size() == 1;
 			log.info(readResult.get(0).toString());
 
 			String url = environment.getProperty("spring.datasource.url", "");
