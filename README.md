@@ -5,7 +5,8 @@ while keeping the same repository.
 ```
 mvn clean package
 ```
-Uses H2 in memory DB during unit tests (fully auto-confgired here. Not same as H2 below)
+Uses H2 in memory DB during unit tests.  Here it is fully auto-configured.
+It is similar but not the same as H2 below, where we configure exact dbname and password.
 
 ## H2
 In memory but could be set up to save to a file and be persistent.
@@ -28,6 +29,17 @@ Check the results
 mysql -uexample_user -pexample_password
 use example_db;
 select * from mdfile;
+```
+
+Notes on MySQL setup:
+```
+brew install mysql
+brew services start mysql
+# mysqld_safe is an item that can run in the background. You can manage this in Log Items Settings
+# mysql -uroot    (for now, no password for this user)
+CREATE DATABASE example_db;
+CREATE USER ‘example_user’@'localhost' IDENTIFIED BY 'example_password';
+GRANT ALL ON example_db.* to 'example_user'@'localhost';
 ```
 
 ## Postgres
