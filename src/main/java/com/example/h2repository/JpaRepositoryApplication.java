@@ -32,7 +32,7 @@ public class JpaRepositoryApplication {
 					.build();
 			repository.save(f1);
 
-			List<MDFile> readResult = repository.findByUpdateTime(zdt);
+			List<MDFile> readResult = repository.findByMdIdAndUpdateTime("123", zdt);
 			assert readResult.size() == 1;
 			log.info(readResult.get(0).toString());
 

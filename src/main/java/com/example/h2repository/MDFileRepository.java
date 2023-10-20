@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface MDFileRepository extends CrudRepository<MDFile, Long> {
-    List<MDFile> findByUpdateTime(ZonedDateTime updateTime);
+    List<MDFile> findByMdIdAndUpdateTime(String mdId, ZonedDateTime updateTime);
 }
